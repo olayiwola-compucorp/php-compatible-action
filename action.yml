@@ -1,0 +1,9 @@
+name: 'PHPCS version compatibility check'
+description: 'PHPCS version compatibility check
+author: 'olayiwola'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+branding:
+  icon: 'code'
+  color: 'blue'

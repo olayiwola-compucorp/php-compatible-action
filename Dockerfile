@@ -8,7 +8,12 @@ RUN apk add --no-cache \
  && phpcs --config-set installed_paths /root/.composer/vendor/phpcompatibility/php-compatibility \
  && phpcs --config-set default_standard PHPCompatibility
 
-WORKDIR /app
 
-ENTRYPOINT ["phpcs --standard=PHPCompatibility --runtime-set testVersion 7.4 ."]
+COPY entrypoint.sh /entrypoint.sh
+COPY problem-matcher.json /problem-matcher.json
+
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
+
 CMD ["--version"]

@@ -1,9 +1,21 @@
 name: 'PHPCS version compatibility check'
 description: 'PHPCS version compatibility check
 author: 'olayiwola'
+inputs:
+  phpcc_path:
+    description: 'path to check from'
+    required: true
+    default: '.'
+  phpcc_version:
+    description: 'PHP version to check against'
+    requied: true
+    default: '7.4'
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  env:
+    PHPCC_PATH: ${{ inputs.phpcc_path }}
+    PHPCC_VERSION: ${{ inputs.phpcc_version }}
 branding:
   icon: 'code'
   color: 'blue'
